@@ -10,7 +10,12 @@ import UINotifications from '../../pages/notifications';
 import TablesStatic from '../../pages/tables/static';
 import MapsGoogle from '../../pages/components/maps/google';
 import CoreTypography from '../../pages/typography';
-import Charts from '../../pages/components/charts/Charts';
+import Family from '../../pages/components/family/Family';
+import Adrenalin from '../../pages/components/adrenalin/Adrenalin';
+import TikTok from '../../pages/components/adrenalin/TikTok';
+import Cartoon from '../../pages/components/cartoon/Cartoon'; 
+import Banking from '../../pages/components/cartoon/Banking'; 
+import OwnBanking from '../../pages/components/cartoon/OwnBanking'; 
 import Dashboard from '../../pages/dashboard';
 
 import Header from '../Header';
@@ -79,12 +84,13 @@ class Layout extends React.Component {
                   <Switch>
                     <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
                     <Route path="/app/main/dashboard" exact component={Dashboard} />
-                    <Route path="/app/icons" exact component={UIIcons} />
-                    <Route path="/app/notifications" exact component={UINotifications} />
-                    <Route path="/app/charts" exact component={Charts} />
-                    <Route path="/app/tables" exact component={TablesStatic} />
-                    <Route path="/app/maps" exact component={MapsGoogle} />
-                    <Route path="/app/typography" exact component={CoreTypography} />
+                    <Route path="/app/family" exact component={Family} />
+                    <Route path="/app/adrenalin" exact component={Adrenalin} />
+                    <Route path="/app/adrenalin/tiktok" exact component={TikTok} />
+                    <Route path="/app/cartoon" exact component={Cartoon} />
+                    <Route path="/app/cartoon/banking" exact component={Banking} />
+                    <Route path="/app/cartoon/what-is-banking" exact component={OwnBanking} />
+
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>

@@ -1,77 +1,83 @@
 import React from "react";
+
 import { Row, Col, Progress, Table, Label, Input } from "reactstrap";
-
-import Widget from "../../components/Widget";
-
-import Calendar from "./components/calendar/Calendar";
-import Map from "./components/am4chartMap/am4chartMap";
-import Rickshaw from "./components/rickshaw/Rickshaw";
-
 import AnimateNumber from "react-animated-number";
 
-import s from "./Dashboard.module.scss";
+import Widget from "../../../components/Widget";
+import ApexChart from "react-apexcharts";
 
-import peopleA1 from "../../images/people/a1.jpg";
-import peopleA2 from "../../images/people/a2.jpg";
-import peopleA5 from "../../images/people/a5.jpg";
-import peopleA4 from "../../images/people/a4.jpg";
+import s from "./Cartoon.module.scss";
+import { chartData, liveChart, liveChartInterval } from "./mock";
+import Sparklines from "../../../components/Sparklines";
 
-class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      graph: null,
-      checkedArr: [false, false, false],
-    };
-    this.checkTable = this.checkTable.bind(this);
-  }
+import ReactEchartsCore from "echarts-for-react/lib/core";
 
-  checkTable(id) {
-    let arr = [];
-    if (id === 0) {
-      const val = !this.state.checkedArr[0];
-      for (let i = 0; i < this.state.checkedArr.length; i += 1) {
-        arr[i] = val;
-      }
-    } else {
-      arr = this.state.checkedArr;
-      arr[id] = !arr[id];
-    }
-    if (arr[0]) {
-      let count = 1;
-      for (let i = 1; i < arr.length; i += 1) {
-        if (arr[i]) {
-          count += 1;
-        }
-      }
-      if (count !== arr.length) {
-        arr[0] = !arr[0];
-      }
-    }
-    this.setState({
-      checkedArr: arr,
-    });
+import echarts from "echarts/lib/echarts";
+
+import "echarts/lib/chart/line";
+import "echarts/lib/chart/pie";
+import "echarts/lib/chart/themeRiver";
+import "echarts/lib/component/tooltip";
+import "echarts/lib/component/legend";
+
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import exporting from "highcharts/modules/exporting";
+import exportData from "highcharts/modules/export-data";
+
+exporting(Highcharts);
+exportData(Highcharts);
+
+class Banking extends React.Component {
+  state = {
+    cd: chartData,
+    ld: liveChart,
+    initEchartsOptions: {
+      renderer: "canvas",
+    },
+    sparklineData: {
+      series: [{ data: [1, 7, 3, 5, 7, 8] }],
+      options1: {
+        colors: ["#db2a34"],
+        plotOptions: {
+          bar: {
+            columnWidth: "50%",
+          },
+        },
+      },
+      options2: {
+        colors: ["#2477ff"],
+        plotOptions: {
+          bar: {
+            columnWidth: "50%",
+          },
+        },
+      },
+    },
+  };
+
+  componentWillUnmount() {
+    clearInterval(liveChartInterval);
   }
 
   render() {
+    const { cd, ld, initEchartsOptions, sparklineData } = this.state;
     return (
       <div className={s.root}>
         <h1 className="page-title">
-          El parque &nbsp;
-          <small>
-            <small>No te pierdas nada</small>
-          </small>
+          <span className="fw-semi-bold">Cartoon</span> - World
         </h1>
+        <h2>¿Qué es para ti la banca?</h2>
+        <div>
+          <Row>
+            <Col lg={7}>
 
-        <Row>
-          <Col lg={7}>
-            <Widget className="bg-transparent">
-              <Map />
-            </Widget>
-          </Col>
-          <Col lg={1} />
-
-          <Col lg={4}>
+              <iframe width="800" height="680" frameborder="0" scrolling="no" src="https://sumopaint.com/flash/api.php?target=https://www.inni.com/api/paint.php& url=https://www.inni.com/images/summer.jpg& mask=https://www.inni.com/images/mask.png& cloud=0&service=Save%20to%20INNI"></iframe>
+            </Col>
+            
+            <Col lg={1} />
+            
+            <Col lg={4}>
             <Widget
               className="bg-transparent"
               title={
@@ -155,11 +161,11 @@ class Dashboard extends React.Component {
               
             </Widget>
           </Col>
-
-        </Row>
+          </Row>
+        </div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default Banking;

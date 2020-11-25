@@ -14,9 +14,10 @@ class BreadcrumbHistory extends Component {
       .join(' ')
     )
     const length = route.length;
+    
     return route.map((item,index) => (
       length === index + 1 ? 
-      <BreadcrumbItem key={uuid()} className="active"><strong>{item}</strong></BreadcrumbItem> : 
+      <BreadcrumbItem key={uuid()} className="active"><strong>{item}{item == 'Adrenalin' || item == 'Family' || item == 'Cartoon' ? ' World' : ''}</strong></BreadcrumbItem> : 
       <BreadcrumbItem key={uuid()}>{item}</BreadcrumbItem>
     ))
   }

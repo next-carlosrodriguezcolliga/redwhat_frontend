@@ -87,12 +87,7 @@ class LinksGroup extends Component {
             to={this.props.link}
             activeClassName={s.headerLinkActive}
             style={{ paddingLeft: `${36 + (10 * (this.props.deep - 1))}px` }}
-            onClick={(e) => {
-              // able to go to link is not available(for Demo)
-              if (this.props.link.includes('menu')) {
-                e.preventDefault();
-              }
-            }}
+            onClick={this.props.onClick}
             exact={exact}
           >
             {this.props.header} {this.props.label && <sup className={`${s.headerLabel} text-${this.props.labelColor || 'warning'}`}>{this.props.label}</sup>}

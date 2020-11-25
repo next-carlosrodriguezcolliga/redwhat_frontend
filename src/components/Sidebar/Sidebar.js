@@ -11,6 +11,10 @@ import LinksGroup from './LinksGroup';
 import {changeActiveSidebarItem} from '../../actions/navigation';
 import {logoutUser} from '../../actions/user';
 
+
+import ReactModal from 'react-modal';
+
+
 class Sidebar extends React.Component {
     static propTypes = {
         sidebarStatic: PropTypes.bool,
@@ -27,10 +31,28 @@ class Sidebar extends React.Component {
         activeItem: '',
     };
 
+
+
+
     constructor(props) {
         super(props);
 
         this.doLogout = this.doLogout.bind(this);
+
+        this.state = {
+              showModal: false
+            };
+
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handleOpenModal () {
+        this.setState({ showModal: true });
+    }
+  
+    handleCloseModal () {
+        this.setState({ showModal: false });
     }
 
     componentDidMount() {
@@ -88,20 +110,45 @@ class Sidebar extends React.Component {
                     <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
-                        header="Cartoon World ( < 10 años)"
+                        header="Cartoon World"
                         isHeader
                         iconName="flaticon-network"
-                        link="/app/typography"
-                        index="core"
+                        link="/app/cartoon"
+                        index="cartoon"
+                        childrenLinks={[
+                            {
+                                header: 'Aprendiendo a ahorrar', link: '/app/cartoon',
+                            },
+                            {
+                                header: '¿Qué es para ti la banca?', link: '/app/cartoon/what-is-banking',
+                            },
+                            {
+                                header: '¿Qué es ahorrar?', link: '/app/cartoon', 
+                            },
+                            {
+                                header: '¿Qué es banca?', link: '/app/cartoon/banking', 
+                            },
+                        ]}
                     />
                     <LinksGroup
-                        onActiveSidebarItemChange={t => this.props.dispatch(changeActiveSidebarItem(t))}
+                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
                         header="Adrenalin World"
                         isHeader
                         iconName="flaticon-map-location"
-                        link="/app/tables"
-                        index="tables"
+                        link="/app/adrenalin"
+                        index="adrenalin"
+                        childrenLinks={[
+                            {
+                                header: '¿Qué es La Bolsa?', link: '/app/adrenalin',
+                            },
+                            {
+                                header: 'Super ahorrador', link: '/app/adrenalin',
+                            },
+                            {
+                                header: 'Hablemos de finanzas', link: '/app/adrenalin', 
+                            },
+                        ]}
                     />
                     <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
@@ -109,42 +156,26 @@ class Sidebar extends React.Component {
                         header="Family World"
                         isHeader
                         iconName="flaticon-layers"
-                        link="/app/notifications"
-                        index="forms"
+                        link="/app/family"
+                        index="family"
                         childrenLinks={[
                             {
-                                header: 'Family Charts', link: '/app/family-charts',
+                                header: 'Economía familiar', link: '/app/family',
                             },
                             {
-                                header: 'Family Icons', link: '/app/family-icons',
+                                header: 'Tu Cuenta', link: '/app/family',
                             },
                             {
-                                header: 'Family Maps', link: '/app/family-maps',
+                                header: 'Tu Gestor', link: '/app/family',
+                            },
+                            {
+                                header: 'Tu oficina', link: '/app/family', 
                             },
                         ]}
                     />
-                    <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Components"
-                        isHeader
-                        iconName="flaticon-list"
-                        link="/app/forms"
-                        index="forms"
-                        childrenLinks={[
-                            {
-                                header: 'Charts', link: '/app/charts',
-                            },
-                            {
-                                header: 'Icons', link: '/app/icons',
-                            },
-                            {
-                                header: 'Maps', link: '/app/maps',
-                            },
-                        ]}
-                    />
+                    
                 </ul>
-                
+
             </nav>
         );
     }
