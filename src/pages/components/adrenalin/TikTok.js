@@ -85,7 +85,7 @@ class TikTok extends React.Component {
         <h1 className="page-title">
           <span className="fw-semi-bold">Cartoon</span> - World
         </h1>
-        <h2>¿Qué es banca?</h2>
+        <h2>¿Eres TikToker? - ¡Demúestranoslo!</h2>
         <div>
           <Row>
             <Col lg={7}>

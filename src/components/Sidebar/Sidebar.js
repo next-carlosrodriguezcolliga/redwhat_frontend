@@ -140,13 +140,13 @@ class Sidebar extends React.Component {
                         index="adrenalin"
                         childrenLinks={[
                             {
-                                header: '¿Qué es La Bolsa?', link: '/app/adrenalin',
+                                header: 'Hablemos de finanzas', link: '/app/adrenalin',
                             },
                             {
-                                header: 'Super ahorrador', link: '/app/adrenalin',
+                                header: 'TikTokers', link: '/app/adrenalin/tiktok',
                             },
                             {
-                                header: 'Hablemos de finanzas', link: '/app/adrenalin', 
+                                header: '¿Qué es la bolsa?', link: '/app/adrenalin', 
                             },
                         ]}
                     />
