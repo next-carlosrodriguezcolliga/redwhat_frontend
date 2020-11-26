@@ -22,5 +22,5 @@ yarn
 ## Quick start
 Run development server
 ```shell
-yarn run
+npm start
 ```
