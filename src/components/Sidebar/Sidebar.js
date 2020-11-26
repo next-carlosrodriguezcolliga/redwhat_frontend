@@ -173,6 +173,16 @@ class Sidebar extends React.Component {
                             },
                         ]}
                     />
+                    <LinksGroup
+                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+                        activeItem={this.props.activeItem}
+                        header="PRIVATE CONTENT"
+                        isHeader
+                        iconName="flaticon-layers"
+                        link="/app/private?private=1"
+                        index="private"
+                        
+                    />
                     
                 </ul>
 
