@@ -1,6 +1,6 @@
 # 🤘 FinPark - Red What Hackathon Ninja 2020
 
-F
+
 ## Instalation 
 
 1. Clone repository
