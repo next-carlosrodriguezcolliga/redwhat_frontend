@@ -16,6 +16,7 @@ cd redwhat_frontend
 npm install
 ```
 ## Quick start
+
 Run development server
 ```shell
 npm start
