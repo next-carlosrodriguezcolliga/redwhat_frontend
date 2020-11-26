@@ -15,10 +15,6 @@ cd redwhat_frontend
 ```shell
 npm install
 ```
-```shell
-yarn
-```
-
 ## Quick start
 Run development server
 ```shell
