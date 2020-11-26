@@ -178,7 +178,7 @@ class Sidebar extends React.Component {
                         activeItem={this.props.activeItem}
                         header="PRIVATE CONTENT"
                         isHeader
-                        iconName="flaticon-layers"
+                        iconName="flaticon-lock"
                         link="/app/private?private=1"
                         index="private"
                         
