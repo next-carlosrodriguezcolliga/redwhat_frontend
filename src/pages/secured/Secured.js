@@ -15,6 +15,11 @@ class Secured extends Component {
     })
   }
 
+  logout() {
+    this.props.history.push('/');
+    this.state.keycloak.logout();
+  }
+
   render() {
 
     if (this.state.keycloak) {
