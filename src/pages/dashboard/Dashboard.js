@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Progress, Table, Label, Input } from "reactstrap";
+import { Row, Col, Progress } from "reactstrap";
 
 import Widget from "../../components/Widget";
 
@@ -11,10 +11,7 @@ import AnimateNumber from "react-animated-number";
 
 import s from "./Dashboard.module.scss";
 
-import peopleA1 from "../../images/people/a1.jpg";
-import peopleA2 from "../../images/people/a2.jpg";
-import peopleA5 from "../../images/people/a5.jpg";
-import peopleA4 from "../../images/people/a4.jpg";
+
 
 class Dashboard extends React.Component {
   constructor(props) {

@@ -110,15 +110,8 @@ class Login extends React.Component {
                                 </p>
                                 <Link className="d-block text-center mb-4" to="register">Create an Account</Link>
                                 <div className="social-buttons">
-                                    <Button color="primary" className="social-button">
-                                        <i className="social-icon social-google"/>
-                                        <p className="social-text">GOOGLE</p>
-                                    </Button>
-                                    <Button color="success" className="social-button">
-                                        <i className="social-icon social-microsoft"
-                                           style={{backgroundImage: `url(${microsoft})`}}/>
-                                        <p className="social-text" style={{color: '#fff'}}>MICROSOFT</p>
-                                    </Button>
+                                    
+                                    
                                 </div>
                             </div>
                         </form>
