@@ -39,8 +39,13 @@ class Layout extends React.Component {
     super(props);
 
     this.handleSwipe = this.handleSwipe.bind(this);
+
   }
 
+
+  componentDidMount(){
+
+  }
 
   handleSwipe(e) {
     if ('ontouchstart' in window) {
@@ -60,47 +65,49 @@ class Layout extends React.Component {
 
   render() {
     return (
-      <div
-        className={[
-          s.root,
-          'sidebar-' + this.props.sidebarPosition,
-          'sidebar-' + this.props.sidebarVisibility,
-        ].join(' ')}
-      >
-        <div className={s.wrap}>
-          <Header />
-          {/* <Chat chatOpen={this.state.chatOpen} /> */}
-          {/* <Helper /> */}
-          <Sidebar />
-          <Hammer onSwipe={this.handleSwipe}>
-            <main className={s.content}>
-              <BreadcrumbHistory url={this.props.location.pathname} />
-              <TransitionGroup>
-                <CSSTransition
-                  key={this.props.location.key}
-                  classNames="fade"
-                  timeout={200}
-                >
-                  <Switch>
-                    <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
-                    <Route path="/app/main/dashboard" exact component={Dashboard} />
-                    <Route path="/app/family" exact component={Family} />
-                    <Route path="/app/adrenalin" exact component={Adrenalin} />
-                    <Route path="/app/adrenalin/tiktok" exact component={TikTok} />
-                    <Route path="/app/cartoon" exact component={Cartoon} />
-                    <Route path="/app/cartoon/banking" exact component={Banking} />
-                    <Route path="/app/cartoon/what-is-banking" exact component={OwnBanking} />
 
-                  </Switch>
-                </CSSTransition>
-              </TransitionGroup>
-              <footer className={s.contentFooter}>
-                FinPark - Developed during RedHat BBVA Hackathon by  <a href="#" >RedWhat Team</a>
-              </footer>
-            </main>
-          </Hammer>
-        </div>
-      </div>
+
+              <div
+                className={[
+                  s.root,
+                  'sidebar-' + this.props.sidebarPosition,
+                  'sidebar-' + this.props.sidebarVisibility,
+                ].join(' ')}
+              >
+                <div className={s.wrap}>
+                  <Header />
+                  {/* <Chat chatOpen={this.state.chatOpen} /> */}
+                  {/* <Helper /> */}
+                  <Sidebar />
+                  <Hammer onSwipe={this.handleSwipe}>
+                    <main className={s.content}>
+                      <BreadcrumbHistory url={this.props.location.pathname} />
+                      <TransitionGroup>
+                        <CSSTransition
+                          key={this.props.location.key}
+                          classNames="fade"
+                          timeout={200}
+                        >
+                          <Switch>
+                            <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
+                            <Route path="/app/main/dashboard"  component={Dashboard} />
+                            <Route path="/app/family" exact component={Family} />
+                            <Route path="/app/adrenalin" exact component={Adrenalin} />
+                            <Route path="/app/adrenalin/tiktok" exact component={TikTok} />
+                            <Route path="/app/cartoon" exact component={Cartoon} />
+                            <Route path="/app/cartoon/banking" exact component={Banking} />
+                            <Route path="/app/cartoon/what-is-banking" exact component={OwnBanking} />
+
+                          </Switch>
+                        </CSSTransition>
+                      </TransitionGroup>
+                      <footer className={s.contentFooter}>
+                        FinPark - Developed during RedHat BBVA Hackathon by  <a href="#" >RedWhat Team</a>
+                      </footer>
+                    </main>
+                  </Hammer>
+                </div>
+              </div>
     );
   }
 }

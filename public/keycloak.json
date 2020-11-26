@@ -1,0 +1,8 @@
+{
+  "realm": "RedWhatRealm",
+  "auth-server-url": "https://keycloak-keycloak.apps.cluster-3397.3397.example.opentlc.com/auth/",
+  "ssl-required": "none",
+  "resource": "rw-frontend",
+  "public-client": true,
+  "confidential-port": 0
+}

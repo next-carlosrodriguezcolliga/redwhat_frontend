@@ -10,14 +10,40 @@ import s from "./Cartoon.module.scss";
 
 class Banking extends React.Component {
   state = {
-    
+    done: false,
+      statistics: null
   };
+
+  componentDidMount(){
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: 1 })
+    };
+    fetch('http://users-backend-native-redwhat.apps.cluster-3397.3397.example.opentlc.com/users/cartoon/completed', requestOptions)
+        .then(response => response.json())
+        .then(data => data.id);
+
+    let url = "http://users-service-redwhat.apps.cluster-3397.3397.example.opentlc.com/users/statistics";
+    fetch(url)
+        .then(result=>result.json())
+        .then(statistics=>this.setState({
+            done: true,
+            statistics
+        }))  
+
+  }
 
   componentWillUnmount() {
   }
 
   render() {
+    if (!this.state.done)
+        return <div>Loading...</div>;
+      else
     return (
+
       <div className={s.root}>
         <h1 className="page-title">
           <span className="fw-semi-bold">Cartoon</span> - World
@@ -33,87 +59,87 @@ class Banking extends React.Component {
             
             <Col lg={4}>
             <Widget
-              className="bg-transparent"
-              title={
-                <h5>
-                  {" "}
-                  Tus
-                  <span className="fw-semi-bold">&nbsp;Datos</span>
-                </h5>
-              }
-              
-            >
-              <p>
-                Nivel: <strong>Whatever</strong>
-              </p>
-              <p>
-                <span className="circle bg-default text-white">
-                  <i className="fa fa-map-marker" />
-                </span>{" "}
-                &nbsp; 1466932 FinParkers, 145 On-Line
-              </p>
-              <div className="row progress-stats">
-                <div className="col-md-9 col-12">
-                  <h6 className="name fw-semi-bold">Cartoon World</h6>
-                  <p className="description deemphasize mb-xs text-white">
-                    Has completado el
-                  </p>
-                  <Progress
-                    color="primary"
-                    value="60"
-                    className="bg-custom-dark progress-xs"
-                  />
-                </div>
-                <div className="col-md-3 col-12 text-center">
-                  <span className="status rounded rounded-lg bg-default text-light">
-                    <small>
-                      <AnimateNumber value={75} />%
-                    </small>
-                  </span>
-                </div>
-              </div>
-              <div className="row progress-stats">
-                <div className="col-md-9 col-12">
-                  <h6 className="name fw-semi-bold">Adrenalin World</h6>
-                  <p className="description deemphasize mb-xs text-white">
-                    Has completado el
-                  </p>
-                  <Progress
-                    color="danger"
-                    value="39"
-                    className="bg-custom-dark progress-xs"
-                  />
-                </div>
-                <div className="col-md-3 col-12 text-center">
-                  <span className="status rounded rounded-lg bg-default text-light">
-                    <small>
-                      <AnimateNumber value={84} />%
-                    </small>
-                  </span>
-                </div>
-              </div>
-              <div className="row progress-stats">
-                <div className="col-md-9 col-12">
-                  <h6 className="name fw-semi-bold">Family World</h6>
-                  <p className="description deemphasize mb-xs text-white">
-                    Has completado el
-                  </p>
-                  <Progress
-                    color="success"
-                    value="80"
-                    className="bg-custom-dark progress-xs"
-                  />
-                </div>
-                <div className="col-md-3 col-12 text-center">
-                  <span className="status rounded rounded-lg bg-default text-light">
-                    <small>
-                      <AnimateNumber value={92} />%
-                    </small>
-                  </span>
-                </div>
-              </div>
-              
-            </Widget>
+                    className="bg-transparent"
+                    title={
+                      <h5>
+                        {" "}
+                        Tus
+                        <span className="fw-semi-bold">&nbsp;Datos</span>
+                      </h5>
+                    }
+                    
+                  >
+                    <p>
+                      Nivel: <strong>Joven Padawan</strong>
+                    </p>
+                    <p>
+                      <span className="circle bg-default text-white">
+                        <i className="fa fa-map-marker" />
+                      </span>{" "}
+                      &nbsp; {this.state.statistics.users_registered} FinParkers, {this.state.statistics.users_online} On-Line
+                    </p>
+                    <div className="row progress-stats">
+                      <div className="col-md-9 col-12">
+                        <h6 className="name fw-semi-bold">Cartoon World</h6>
+                        <p className="description deemphasize mb-xs text-white">
+                          Has completado el
+                        </p>
+                        <Progress
+                          color="primary"
+                          value={this.state.statistics.cartoon_completed}
+                          className="bg-custom-dark progress-xs"
+                        />
+                      </div>
+                      <div className="col-md-3 col-12 text-center">
+                        <span className="status rounded rounded-lg bg-default text-light">
+                          <small>
+                            <AnimateNumber value={this.state.statistics.cartoon_completed} />%
+                          </small>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="row progress-stats">
+                      <div className="col-md-9 col-12">
+                        <h6 className="name fw-semi-bold">Adrenalin World</h6>
+                        <p className="description deemphasize mb-xs text-white">
+                          Has completado el
+                        </p>
+                        <Progress
+                          color="danger"
+                          value={this.state.statistics.adrenalin_completed}
+                          className="bg-custom-dark progress-xs"
+                        />
+                      </div>
+                      <div className="col-md-3 col-12 text-center">
+                        <span className="status rounded rounded-lg bg-default text-light">
+                          <small>
+                            <AnimateNumber value={this.state.statistics.adrenalin_completed} />%
+                          </small>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="row progress-stats">
+                      <div className="col-md-9 col-12">
+                        <h6 className="name fw-semi-bold">Family World</h6>
+                        <p className="description deemphasize mb-xs text-white">
+                          Has completado el
+                        </p>
+                        <Progress
+                          color="success"
+                          value={this.state.statistics.family_completed}
+                          className="bg-custom-dark progress-xs"
+                        />
+                      </div>
+                      <div className="col-md-3 col-12 text-center">
+                        <span className="status rounded rounded-lg bg-default text-light">
+                          <small>
+                            <AnimateNumber value={this.state.statistics.family_completed} />%
+                          </small>
+                        </span>
+                      </div>
+                    </div>
+                    
+                  </Widget>
           </Col>
           </Row>
         </div>

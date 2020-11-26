@@ -24,7 +24,7 @@ import cities_original from './mock.js';
   
   componentDidMount() {
     
-    let url = "http://contents-service-redwhat.apps.cluster-3397.3397.example.opentlc.com/contents/map";
+    let url = "http://contents-backend-native-redwhat.apps.cluster-3397.3397.example.opentlc.com/contents/map";
     fetch(url)
         .then(result=>result.json())
         .then(cities_json=>this.setState({

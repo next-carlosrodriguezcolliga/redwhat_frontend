@@ -7,21 +7,10 @@ import {
   Nav,
   NavItem,
   NavLink,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Input,
-  UncontrolledAlert,
   Dropdown,
-  Collapse,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  Badge,
-  ButtonGroup,
-  Button,
-  Form,
-  FormGroup,
+  Badge
 } from "reactstrap";
 import Notifications from "../Notifications";
 import { logoutUser } from "../../actions/user";
@@ -32,9 +21,6 @@ import {
   changeSidebarVisibility,
 } from "../../actions/navigation";
 
-import sender1 from "../../images/1.png";
-import sender2 from "../../images/2.png";
-import sender3 from "../../images/3.png";
 
 import avatar from "../../images/people/bugs.png";
 
@@ -151,16 +137,9 @@ class Header extends React.Component {
                 <img src={avatar} alt="..." />
               </span>
               <span className={`small ${s.accountCheck}`}>Izan López</span>
-              <Badge className={s.badge} color="primary">
-                13
-              </Badge>
+              
             </DropdownToggle>
-            <DropdownMenu
-              right
-              className={`${s.notificationsWrapper} py-0 animate__animated animate__faster animate__fadeInUp`}
-            >
-              <Notifications />
-            </DropdownMenu>
+            
           </Dropdown>
           <NavItem className="d-lg-none d-md-block d-sm-none">
             <NavLink

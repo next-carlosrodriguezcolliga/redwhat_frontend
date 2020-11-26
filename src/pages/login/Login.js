@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { Container, Alert, Button, FormGroup, Label, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
 import Widget from '../../components/Widget';
 import { loginUser } from '../../actions/user';
-import microsoft from '../../images/microsoft.png';
+
+
+
 
 class Login extends React.Component {
     static propTypes = {

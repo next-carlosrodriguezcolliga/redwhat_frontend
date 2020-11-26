@@ -14,6 +14,7 @@ import Login from '../pages/login';
 import Register from '../pages/register';
 import { logoutUser } from '../actions/user';
 
+
 const PrivateRoute = ({dispatch, component, ...rest }) => {
     if (!Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
         dispatch(logoutUser());
@@ -30,26 +31,27 @@ const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-c
 class App extends React.PureComponent {
   render() {
     return (
-        <div>
-            <ToastContainer
-                autoClose={5000}
-                hideProgressBar
-                closeButton={<CloseButton/>}
-            />
-            <HashRouter>
-                <Switch>
-                    <Route path="/" exact render={() => <Redirect to="/app/main"/>}/>
-                    <Route path="/app" exact render={() => <Redirect to="/app/main"/>}/>
-                    <PrivateRoute path="/app" dispatch={this.props.dispatch} component={LayoutComponent}/>
-                    <Route path="/register" exact component={Register}/>
-                    <Route path="/login" exact component={Login}/>
-                    <Route path="/error" exact component={ErrorPage}/>
-                    <Route component={ErrorPage}/>
-                    <Redirect from="*" to="/app/main/dashboard"/>
-                </Switch>
-            </HashRouter>
-        </div>
-
+        
+            <div>
+                <ToastContainer
+                    autoClose={5000}
+                    hideProgressBar
+                    closeButton={<CloseButton/>}
+                />
+                <HashRouter>
+                    <Switch>
+                        <Route path="/" exact render={() => <Redirect to="/app/main"/>}/>
+                        <Route path="/app" exact render={() => <Redirect to="/app/main"/>}/>
+                        <PrivateRoute path="/app" dispatch={this.props.dispatch} component={LayoutComponent}/>
+                        <Route path="/register" exact component={Register}/>
+                        <Route path="/login" exact component={Login}/>
+                        <Route path="/error" exact component={ErrorPage}/>
+                        <Route component={ErrorPage}/>
+                        <Redirect from="*" to="/app/main/dashboard"/>
+                    </Switch>
+                </HashRouter>
+            </div>
+        
     );
   }
 }

@@ -5,8 +5,19 @@ import uuid from 'uuid/v4'
 class BreadcrumbHistory extends Component {
 
   renderBreadCrumbs = () => {
+
+    let own_url = this.props.url;
+
+    if (own_url.indexOf('&') > 0 && own_url.indexOf('?') < 0){
+     // alert('url mal formada' + own_url.indexOf('&') + " ||| " + own_url.indexOf('?') + " ||| " + own_url);
+     // window.location.href = own_url.replace('&','?');
+     // alert('url bien formada' + own_url.indexOf('&') + " ||| " + own_url.indexOf('?') + " ||| " + own_url.replace('&','?'));
+    }
+
+    own_url = ( own_url.indexOf('&') > 0 ? own_url.split('&')[0] : own_url);
+    own_url = ( own_url.indexOf('?') > 0 ? own_url.split('?')[0] : own_url);
     
-    let route = this.props.url.split('/')
+    let route = own_url.split('/')
     .slice(1)
     .map(route => route
       .split('-')
