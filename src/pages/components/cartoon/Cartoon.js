@@ -15,7 +15,7 @@ class Cartoon extends React.Component {
   };
 
   componentDidMount(){
-
+  /*
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -32,6 +32,7 @@ class Cartoon extends React.Component {
             done: true,
             statistics
         }))  
+        */
 
   }
 
@@ -39,9 +40,7 @@ class Cartoon extends React.Component {
   }
 
   render() {
-    if (!this.state.done)
-        return <div>Loading...</div>;
-      else
+
     return (
       <div className={s.root}>
         <h1 className="page-title">
@@ -75,7 +74,7 @@ class Cartoon extends React.Component {
                       <span className="circle bg-default text-white">
                         <i className="fa fa-map-marker" />
                       </span>{" "}
-                      &nbsp; {this.state.statistics.users_registered} FinParkers, {this.state.statistics.users_online} On-Line
+                      &nbsp; 4892 FinParkers, 418 On-Line
                     </p>
                     <div className="row progress-stats">
                       <div className="col-md-9 col-12">
@@ -85,14 +84,14 @@ class Cartoon extends React.Component {
                         </p>
                         <Progress
                           color="primary"
-                          value={this.state.statistics.cartoon_completed}
+                          value="35"
                           className="bg-custom-dark progress-xs"
                         />
                       </div>
                       <div className="col-md-3 col-12 text-center">
                         <span className="status rounded rounded-lg bg-default text-light">
                           <small>
-                            <AnimateNumber value={this.state.statistics.cartoon_completed} />%
+                            <AnimateNumber value="35" />%
                           </small>
                         </span>
                       </div>
@@ -105,14 +104,14 @@ class Cartoon extends React.Component {
                         </p>
                         <Progress
                           color="danger"
-                          value={this.state.statistics.adrenalin_completed}
+                          value="12"
                           className="bg-custom-dark progress-xs"
                         />
                       </div>
                       <div className="col-md-3 col-12 text-center">
                         <span className="status rounded rounded-lg bg-default text-light">
                           <small>
-                            <AnimateNumber value={this.state.statistics.adrenalin_completed} />%
+                            <AnimateNumber value="12" />%
                           </small>
                         </span>
                       </div>
@@ -125,14 +124,14 @@ class Cartoon extends React.Component {
                         </p>
                         <Progress
                           color="success"
-                          value={this.state.statistics.family_completed}
+                          value="53"
                           className="bg-custom-dark progress-xs"
                         />
                       </div>
                       <div className="col-md-3 col-12 text-center">
                         <span className="status rounded rounded-lg bg-default text-light">
                           <small>
-                            <AnimateNumber value={this.state.statistics.family_completed} />%
+                            <AnimateNumber value="53" />%
                           </small>
                         </span>
                       </div>

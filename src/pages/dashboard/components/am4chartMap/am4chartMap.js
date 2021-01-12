@@ -17,29 +17,13 @@ import cities_original from './mock.js';
     constructor() {
         super();
         this.state = { 
-            done: false,
+            done: true,
             cities_json: []
         };
     }
   
   componentDidMount() {
     
-    let url = "http://contents-backend-native-redwhat.apps.cluster-3397.3397.example.opentlc.com/contents/map";
-    fetch(url)
-        .then(result=>result.json())
-        .then(cities_json=>this.setState({
-            done: true,
-            cities_json
-        }))    
-  }
-
-  componentWillUnmount() {
-    if(this.map) {
-      this.map.dispose();
-    }
-  }
-
-  render() {
     am4core.options.autoDispose = true;
 
     let map = am4core.create("map", am4maps.MapChart);
@@ -70,44 +54,12 @@ import cities_original from './mock.js';
         bgSeries.data = [{
           src: "https://www.parquewarner.com/sites/parquewarner.com/files/parkmap/2456x1590-completo3.jpg"
         }];
-
-        let citySeries = map.series.push(new am4maps.MapImageSeries());
-
-
         
-
-         this.map = map;
-
-    if (!this.state.done){
-        return (
-<div className={s.mapChart}>
-            <div className={s.stats}>
-              <h6 className="mt-1"  style={{color: "black"}}><b>Cargando....</b></h6>
-              <p className="h3 m-0">
-                <span className="mr-xs fw-normal">
-                  <AnimateNumber
-                    value={0}
-                    initialValue={0}
-                    duration={1000} 
-                    stepPrecision={0}
-                    formatValue={n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
-                  /></span>
-                <i className="fa fa-map-marker" />
-              </p>
-            </div>
-            <div className={s.map} id="map">
-              <span>Alternative content for the map</span>
-            </div>
-          </div>
-            )
-    }else{
-
-
         let citySeries2 = map.series.push(new am4maps.MapImageSeries());
-        citySeries2.data = this.state.cities_json;   
-
+        citySeries2.data = cities_original;   
         citySeries2.dataFields.value = "size";
         let city = citySeries2.mapImages.template;
+
         city.nonScaling = true;
         city.propertyFields.latitude = "latitude";
         city.propertyFields.longitude = "longitude";
@@ -119,10 +71,21 @@ import cities_original from './mock.js';
         circle.tooltipText = '{tooltip}';
         circle.propertyFields.radius = 'size';
 
-         this.map = map;
+        this.map = map;
 
+  }
 
-        return (<div className={s.mapChart}>
+  componentWillUnmount() {
+    if(this.map) {
+      this.map.dispose();
+    }
+  }
+
+  render() {
+    
+
+        return (
+          <div className={s.mapChart}>
             <div className={s.stats}>
               <h6 className="mt-1"  style={{color: "black"}}><b>Nuestras atracciones</b></h6>
               <p className="h3 m-0">
@@ -130,7 +93,7 @@ import cities_original from './mock.js';
                   <AnimateNumber
                     value={50}
                     initialValue={0}
-                    duration={1000} 
+                    duration={5000} 
                     stepPrecision={0}
                     formatValue={n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                   /></span>
@@ -141,7 +104,7 @@ import cities_original from './mock.js';
               <span>Alternative content for the map</span>
             </div>
           </div>);
-    }
+    
   }
 }
 

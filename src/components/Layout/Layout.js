@@ -17,7 +17,7 @@ import Cartoon from '../../pages/components/cartoon/Cartoon';
 import Banking from '../../pages/components/cartoon/Banking'; 
 import OwnBanking from '../../pages/components/cartoon/OwnBanking'; 
 import Dashboard from '../../pages/dashboard';
-import Secured from '../../pages/secured/Secured';
+
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -98,7 +98,6 @@ class Layout extends React.Component {
                             <Route path="/app/cartoon" exact component={Cartoon} />
                             <Route path="/app/cartoon/banking" exact component={Banking} />
                             <Route path="/app/cartoon/what-is-banking" exact component={OwnBanking} />
-                            <Route path="/app/private" component={Secured} />
 
                           </Switch>
                         </CSSTransition>
